@@ -19,5 +19,5 @@ function gridToCoords(letter, number) {
   return [y, x];
 }
 
-L.marker(gridToCoords("C", 3)).addTo(map)
-  .bindPopup("Voorbeeld pin C3");
+L.marker([40, 60]).addTo(map)
+  .bindPopup("Tank positie");
