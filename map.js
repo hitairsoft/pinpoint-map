@@ -1,27 +1,25 @@
-// ====== INSTELLINGEN ======
-const width = 100;
-const height = 100;
+const width = 1024;   // 👈 ECHTE pixelbreedte
+const height = 1024;  // 👈 ECHTE pixelhoogte
 
-// ====== MAP MAKEN ======
 const map = L.map('map', {
   crs: L.CRS.Simple,
   minZoom: -1,
-  maxZoom: 2,
-  zoomControl: true
+  maxZoom: 2
 });
 
-// ====== AFBEELDING ======
 const imageUrl = 'map.png';
 const bounds = [[0, 0], [height, width]];
 
 L.imageOverlay(imageUrl, bounds).addTo(map);
 map.fitBounds(bounds);
 
-// ====== RASTER → COÖRDINATEN ======
 function gridToCoords(letter, number) {
-  const letters = "ABCDEFGH"; // pas aan indien nodig
-  const yStep = height / letters.length;
-  const xStep = width / 8;    // 8 kolommen
+  const letters = "ABCDEFGH";
+  const rows = letters.length;
+  const cols = 8;
+
+  const yStep = height / rows;
+  const xStep = width / cols;
 
   const y = letters.indexOf(letter) * yStep + yStep / 2;
   const x = (number - 1) * xStep + xStep / 2;
@@ -29,17 +27,7 @@ function gridToCoords(letter, number) {
   return [y, x];
 }
 
-// ====== VASTE PINPOINTS ======
-L.marker(gridToCoords("C", 3)).addTo(map)
-  .bindPopup("C3 – Voorbeeld");
-
-L.marker(gridToCoords("E", 5)).addTo(map)
-  .bindPopup("E5 – Dekking");
-
-L.marker(gridToCoords("G", 2)).addTo(map)
-  .bindPopup("G2 – Spawn");
-
-// ====== RESPONSIVE FIX ======
-window.addEventListener('resize', () => {
-  map.invalidateSize();
-});
+// Pins
+L.marker(gridToCoords("B", 2)).addTo(map).bindPopup("B2");
+L.marker(gridToCoords("D", 4)).addTo(map).bindPopup("D4");
+L.marker(gridToCoords("F", 3)).addTo(map).bindPopup("F3");
