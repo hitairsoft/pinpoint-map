@@ -30,21 +30,14 @@ function gridToCoords(letter, number) {
 }
 
 // ====== VASTE PINPOINTS ======
-L.marker(gridToCoords("C", 3)).addTo(map).bindPopup("C3 – Voorbeeld");
-L.marker(gridToCoords("E", 5)).addTo(map).bindPopup("E5 – Dekking");
-L.marker(gridToCoords("G", 2)).addTo(map).bindPopup("G2 – Spawn");
+L.marker(gridToCoords("C", 3)).addTo(map)
+  .bindPopup("C3 – Voorbeeld");
 
-// ====== KLIK OM PIN TOE TE VOEGEN ======
-map.on('click', function (e) {
-  const y = e.latlng.lat.toFixed(2);
-  const x = e.latlng.lng.toFixed(2);
+L.marker(gridToCoords("E", 5)).addTo(map)
+  .bindPopup("E5 – Dekking");
 
-  L.marker([y, x]).addTo(map)
-    .bindPopup(`Y: ${y}, X: ${x}`)
-    .openPopup();
-
-  console.log(`[${y}, ${x}]`);
-});
+L.marker(gridToCoords("G", 2)).addTo(map)
+  .bindPopup("G2 – Spawn");
 
 // ====== RESPONSIVE FIX ======
 window.addEventListener('resize', () => {
