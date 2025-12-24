@@ -20,4 +20,7 @@ function gridToCoords(letter, number) {
 }
 
 L.marker([40, 60]).addTo(map)
-  .bindPopup("Tank positie");
+  .bindPopup("Raket");
+
+L.marker([40, 50]).addTo(map)
+  .bindPopup("Raket");
